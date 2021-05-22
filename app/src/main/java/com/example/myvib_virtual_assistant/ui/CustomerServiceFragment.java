@@ -24,13 +24,14 @@ import com.example.myvib_virtual_assistant.chat.ChatRetrieverCreator;
 import com.example.myvib_virtual_assistant.chat.ChatRetrieverListener;
 import com.example.myvib_virtual_assistant.data.models.Chat;
 import com.example.myvib_virtual_assistant.speech.MySpeechRecognizer;
+import com.example.myvib_virtual_assistant.speech.MySpeechRecognizerListener;
 import com.example.myvib_virtual_assistant.speech.SpeechRecognizerBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class CustomerServiceFragment extends Fragment implements View.OnKeyListener, ChatRetrieverListener, View.OnClickListener {
+public class CustomerServiceFragment extends Fragment implements View.OnKeyListener, ChatRetrieverListener, View.OnClickListener, MySpeechRecognizerListener {
     //Views
     RecyclerView chatRecyclerView;
     ChatAdapter chatAdapter;
@@ -145,11 +146,33 @@ public class CustomerServiceFragment extends Fragment implements View.OnKeyListe
     private void appendChatMessage(ChatWrapper chatWrapper) {
         chatAdapter.appendChat(chatWrapper);
     }
+    private void scrollChatSectionToBottom() {
+        chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount() - 1);
+    }
 
     @Override
     public void onResult(Chat chat) {
         //On chat received -> Append to chat
         appendChatMessage(ChatWrapper.fromAI(chat));
+
+        //Scroll to bottom
+        scrollChatSectionToBottom();
+    }
+
+    @Override
+    public void onReady() {
+        //DO NOTHING
+    }
+
+    @Override
+    public void onEnd() {
+        //DO NOTHING
+    }
+
+    @Override
+    public void onResult(String chat) {
+        //Send message using the result
+        sendChatMessage(chat);
     }
 
     @Override
@@ -164,5 +187,8 @@ public class CustomerServiceFragment extends Fragment implements View.OnKeyListe
     @Override
     public void onClick(View v) {
         //Check if correct item
+        if (v.getId() == R.id.chatSpeechImage) {
+            mSpeechRecognizer.startListening(this);
+        }
     }
 }
