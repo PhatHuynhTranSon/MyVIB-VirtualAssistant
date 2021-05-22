@@ -33,26 +33,26 @@
         <action
             android:id="@+id/PredictionToTransaction"
             app:destination="@id/transactionFragment"
-            app:popUpTo="@+id/navigation_graph"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@+id/speechToTextFragment"
+            app:popUpToInclusive="false"/>
         <action
             android:id="@+id/PredictionToPayment"
             app:destination="@id/paymentFragment"
-            app:popUpTo="@+id/navigation_graph"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@+id/speechToTextFragment"
+            app:popUpToInclusive="false"/>
         <action
             android:id="@+id/PredictionToAccount"
             app:destination="@id/accountFragment2"
-            app:popUpTo="@+id/navigation_graph"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@+id/speechToTextFragment"
+            app:popUpToInclusive="false"/>
         <argument
             android:name="speech"
             app:argType="string" />
         <action
             android:id="@+id/PredictionToCustomerService"
             app:destination="@id/customerServiceFragment"
-            app:popUpTo="@+id/navigation_graph"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@+id/speechToTextFragment"
+            app:popUpToInclusive="false"/>
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
