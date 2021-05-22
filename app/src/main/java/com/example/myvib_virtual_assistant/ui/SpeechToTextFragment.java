@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -111,7 +110,6 @@ public class SpeechToTextFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onError(Throwable throwable) {
-        Toast.makeText(getContext(), throwable.toString(), Toast.LENGTH_SHORT).show();
-        //displayError();
+        displayError();
     }
 }
