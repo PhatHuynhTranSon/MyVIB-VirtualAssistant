@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/accountFragment2">
+    <fragment
+        android:id="@+id/accountFragment2"
+        android:name="com.example.myvib_virtual_assistant.AccountFragment"
+        android:label="AccountFragment" />
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.example.myvib_virtual_assistant.LanguageFragment"
+        android:label="LanguageFragment" >
+        <action
+            android:id="@+id/action_languageFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.myvib_virtual_assistant.PaymentFragment"
+        android:label="PaymentFragment" />
+    <fragment
+        android:id="@+id/predictionFragment"
+        android:name="com.example.myvib_virtual_assistant.PredictionFragment"
+        android:label="PredictionFragment" >
+        <action
+            android:id="@+id/action_predictionFragment_to_transactionFragment"
+            app:destination="@id/transactionFragment" />
+        <action
+            android:id="@+id/action_predictionFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_predictionFragment_to_accountFragment2"
+            app:destination="@id/accountFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.myvib_virtual_assistant.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.example.myvib_virtual_assistant.TransactionFragment"
+        android:label="TransactionFragment" />
+    <fragment
+        android:id="@+id/customerServiceFragment"
+        android:name="com.example.myvib_virtual_assistant.CustomerServiceFragment"
+        android:label="fragment_customer_service"
+        tools:layout="@layout/fragment_customer_service" />
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.example.myvib_virtual_assistant.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment2_to_speechToTextFragment"
+            app:destination="@id/speechToTextFragment" />
+        <action
+            android:id="@+id/action_homeFragment2_to_transactionFragment"
+            app:destination="@id/transactionFragment" />
+        <action
+            android:id="@+id/action_homeFragment2_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_homeFragment2_to_accountFragment2"
+            app:destination="@id/accountFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/speechToTextFragment"
+        android:name="com.example.myvib_virtual_assistant.SpeechToTextFragment"
+        android:label="SpeechToTextFragment" >
+        <action
+            android:id="@+id/action_speechToTextFragment_to_predictionFragment"
+            app:destination="@id/predictionFragment" />
+    </fragment>
 </navigation>
