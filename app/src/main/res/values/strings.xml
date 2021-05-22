@@ -49,4 +49,5 @@
     <string name="user">You</string>
     <string name="speech_error">Error encounter. Try again</string>
     <string name="prediction_error">Can not make prediction</string>
+    <string name="can_not_account">Can not retrieve your account information</string>
 </resources>

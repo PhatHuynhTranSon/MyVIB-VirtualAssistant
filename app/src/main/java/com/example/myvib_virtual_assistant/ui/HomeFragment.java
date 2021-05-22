@@ -84,14 +84,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void navigateToAccount() {
-        mNavController.navigate(R.id.action_homeFragment2_to_accountFragment2);
+        mNavController.navigate(R.id.HomeToAccount);
     }
 
     private void navigateToTransaction() {
-        mNavController.navigate(R.id.action_homeFragment2_to_transactionFragment);
+        mNavController.navigate(R.id.HomeToTransaction);
     }
 
     private void navigateToBilling() {
-        mNavController.navigate(R.id.action_homeFragment2_to_paymentFragment);
+        mNavController.navigate(R.id.HomeToPayment);
     }
 }

@@ -2,61 +2,127 @@ package com.example.myvib_virtual_assistant.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myvib_virtual_assistant.R;
+import com.example.myvib_virtual_assistant.balance.AccountBalanceListener;
+import com.example.myvib_virtual_assistant.balance.AccountBalanceRetriever;
+import com.example.myvib_virtual_assistant.balance.AccountBalanceRetrieverBuilder;
+import com.example.myvib_virtual_assistant.data.models.Balance;
+import com.example.myvib_virtual_assistant.string.StringUtils;
 
 
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements AccountBalanceListener {
+    //Arguments
+    String sentence;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    //Account retriever
+    AccountBalanceRetriever mAccountRetriever;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    //TextViews and Edit Text
+    EditText intentEditText;
+    TextView balanceText, savingText, creditCardText;
 
-    public AccountFragment() {
-        // Required empty public constructor
-    }
+    //Progress bar
+    ProgressBar progressBar;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AccountFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AccountFragment newInstance(String param1, String param2) {
-        AccountFragment fragment = new AccountFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    //CardView
+    CardView cardView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        //Initialize text views and edit text
+        balanceText = view.findViewById(R.id.electricityText);
+        savingText = view.findViewById(R.id.waterText);
+        creditCardText = view.findViewById(R.id.phoneText);
+        intentEditText = view.findViewById(R.id.intentEditText);
+
+        //Initialize card view and progress bar
+        progressBar = view.findViewById(R.id.balanceProgressBar);
+        cardView = view.findViewById(R.id.summaryCard);
+
+        //Set the progress bar to Visible and CardView to invisible
+        hideCardView();
+        showProgress();
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //Account retriever
+        mAccountRetriever = AccountBalanceRetrieverBuilder.create();
+
+        //Retrieve
+        mAccountRetriever.getBalance(this);
+
+        //Get the sentence and display
+        sentence = AccountFragmentArgs.fromBundle(getArguments()).getSentence();
+        intentEditText.setText(sentence);
+    }
+
+    @Override
+    public void onResult(Balance balance) {
+        populateFields(balance);
+        hideProgress();
+        showCardView();
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+        finish();
+        displayError();
+    }
+
+    private void displayError() {
+        Toast.makeText(getContext(), R.string.can_not_account, Toast.LENGTH_SHORT).show();
+    }
+
+    private void finish() {
+        getActivity().onBackPressed();
+    }
+
+    private void populateFields(Balance balance) {
+        balanceText.setText(StringUtils.formatCurrency(balance.getBalance()));
+        savingText.setText(StringUtils.formatCurrency(balance.getSaving()));
+        creditCardText.setText(StringUtils.formatCurrency(balance.getCredit()));
+    }
+
+    private void hideProgress() {
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    private void hideCardView() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void showProgress() {
+        cardView.setVisibility(View.INVISIBLE);
+    }
+
+    private void showCardView() {
+        cardView.setVisibility(View.VISIBLE);
     }
 }

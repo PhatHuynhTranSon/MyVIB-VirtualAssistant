@@ -85,13 +85,13 @@
             android:id="@+id/action_homeFragment2_to_speechToTextFragment"
             app:destination="@id/speechToTextFragment" />
         <action
-            android:id="@+id/action_homeFragment2_to_transactionFragment"
+            android:id="@+id/HomeToTransaction"
             app:destination="@id/transactionFragment" />
         <action
-            android:id="@+id/action_homeFragment2_to_paymentFragment"
+            android:id="@+id/HomeToPayment"
             app:destination="@id/paymentFragment" />
         <action
-            android:id="@+id/action_homeFragment2_to_accountFragment2"
+            android:id="@+id/HomeToAccount"
             app:destination="@id/accountFragment2" />
     </fragment>
     <fragment
