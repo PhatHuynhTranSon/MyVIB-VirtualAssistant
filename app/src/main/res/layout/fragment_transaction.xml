@@ -65,17 +65,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/bar" />
 
-        <FrameLayout
-            android:id="@+id/transactionFragmentContainer"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
+        <fragment
+            android:id="@+id/transactionNavHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="409dp"
+            android:layout_height="482dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@+id/imageView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view">
-
-        </FrameLayout>
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:navGraph="@navigation/transaction_navigation_graph" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
