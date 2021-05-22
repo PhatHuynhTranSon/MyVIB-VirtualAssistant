@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 import com.example.myvib_virtual_assistant.R;
 import com.example.myvib_virtual_assistant.languages.Language;
 
-public class LanguageFragment extends Fragment {
-    //Cardview
+public class LanguageFragment extends Fragment implements View.OnClickListener {
+    //CardViews
     CardView englishSelectionCardView;
     CardView vietnameseSelectionCardView;
 
@@ -43,21 +43,8 @@ public class LanguageFragment extends Fragment {
         vietnameseSelectionCardView = view.findViewById(R.id.vietnameseSelection);
 
         //Set on click listeners
-        englishSelectionCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setLanguage("en");
-                navigateToHomeScreen();
-            }
-        });
-
-        vietnameseSelectionCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setLanguage("vi");
-                navigateToHomeScreen();
-            }
-        });
+        englishSelectionCardView.setOnClickListener(this);
+        vietnameseSelectionCardView.setOnClickListener(this);
 
         return view;
     }
@@ -75,5 +62,18 @@ public class LanguageFragment extends Fragment {
 
     private void navigateToHomeScreen() {
         mNavController.navigate(R.id.action_languageFragment_to_homeFragment2);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.englishSelection:
+                setLanguage("en");
+                break;
+            case R.id.vietnameseSelection:
+                setLanguage("vi");
+                break;
+        }
+        navigateToHomeScreen();
     }
 }
