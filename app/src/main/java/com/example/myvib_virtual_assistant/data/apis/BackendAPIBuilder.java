@@ -5,6 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BackendAPIBuilder {
     public static final String URL = "https://vib-competion-backend.herokuapp.com/";
+
     private static <T> T builder(Class<T> endpoint) {
         return new Retrofit.Builder()
                 .baseUrl(URL)

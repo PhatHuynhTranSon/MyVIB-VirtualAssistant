@@ -48,4 +48,5 @@
     <string name="ai" translatable="false">AI</string>
     <string name="user">You</string>
     <string name="speech_error">Error encounter. Try again</string>
+    <string name="prediction_error">Can not make prediction</string>
 </resources>
