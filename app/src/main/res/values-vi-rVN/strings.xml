@@ -53,4 +53,6 @@
     <string name="transfer">Chuyển tiền</string>
     <string name="billing">Thanh toán</string>
     <string name="can_not_payment">Không thể xem hóa đơn. Thử lại</string>
+    <string name="greetings">Xin chào, tôi có thể giúp gì cho bạn ?</string>
+    <string name="can_not_chat">Khôn thể chat. Vui lòng thử lại</string>
 </resources>

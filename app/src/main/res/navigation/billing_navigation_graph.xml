@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/paymentDetailsFragment"
-        android:name="com.example.myvib_virtual_assistant.PaymentDetailsFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.PaymentDetailsFragment"
         android:label="PaymentDetailsFragment" >
         <action
             android:id="@+id/PaymentDetailsToSuccess"

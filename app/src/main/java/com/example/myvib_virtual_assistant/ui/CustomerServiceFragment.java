@@ -2,61 +2,167 @@ package com.example.myvib_virtual_assistant.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.myvib_virtual_assistant.R;
+import com.example.myvib_virtual_assistant.adapter.ChatAdapter;
+import com.example.myvib_virtual_assistant.adapter.ChatWrapper;
+import com.example.myvib_virtual_assistant.chat.ChatRetriever;
+import com.example.myvib_virtual_assistant.chat.ChatRetrieverCreator;
+import com.example.myvib_virtual_assistant.chat.ChatRetrieverListener;
+import com.example.myvib_virtual_assistant.data.models.Chat;
+import com.example.myvib_virtual_assistant.speech.MySpeechRecognizer;
+import com.example.myvib_virtual_assistant.speech.SpeechRecognizerBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class CustomerServiceFragment extends Fragment {
+public class CustomerServiceFragment extends Fragment implements View.OnKeyListener, ChatRetrieverListener, View.OnClickListener {
+    //Views
+    RecyclerView chatRecyclerView;
+    ChatAdapter chatAdapter;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    //Button and EditText
+    ImageView chatImage;
+    EditText chatEdiText;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    //Chat retriever
+    ChatRetriever mChatRetriever;
 
-    public CustomerServiceFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CustomerServiceFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CustomerServiceFragment newInstance(String param1, String param2) {
-        CustomerServiceFragment fragment = new CustomerServiceFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    //Speech recognizer
+    MySpeechRecognizer mSpeechRecognizer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer_service, container, false);
+        View view = inflater.inflate(R.layout.fragment_customer_service, container, false);
+
+        //Initialize variables
+        chatRecyclerView = view.findViewById(R.id.chatRecyclerView);
+        chatEdiText = view.findViewById(R.id.chatEditText);
+        chatImage = view.findViewById(R.id.chatSpeechImage);
+
+        //Set on enter enter
+        chatEdiText.setOnKeyListener(this);
+
+        //Set on click
+        chatImage.setOnClickListener(this);
+
+        //Initialize recycler view
+        initializeRecyclerView();
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //Initialize chat retriever
+        mChatRetriever = ChatRetrieverCreator.get(getContext());
+
+        //Initialize speech recognizer
+        mSpeechRecognizer = SpeechRecognizerBuilder.get(getContext());
+    }
+
+    private void initializeRecyclerView() {
+        //Create a list with first greeting chat
+        ChatWrapper firstChat = generateFirstChatMessage();
+        List<ChatWrapper> chatList = new ArrayList<>();
+        chatList.add(firstChat);
+
+        //Create adapter
+        chatAdapter = new ChatAdapter(getContext(), chatList);
+
+        //Set list
+        chatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        chatRecyclerView.setAdapter(chatAdapter);
+    }
+
+    private ChatWrapper generateFirstChatMessage() {
+        //Set up list
+        Chat chat = new Chat();
+        chat.setResponse(getGreetingMessage());
+        ChatWrapper chatWrapperAi = ChatWrapper.fromAI(chat);
+        return chatWrapperAi;
+    }
+
+    private String getGreetingMessage() {
+        return getString(R.string.greetings);
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        //Check if right component
+        if (v.getId() == R.id.chatEditText) {
+            //Check if Enter is click
+            if ((event.getAction() == KeyEvent.ACTION_DOWN)
+                    && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                //Get chat from box and send message to customer serv
+                sendChatMessage(getChatFromChatBox());
+                //Then clear chat box
+                clearChatBox();
+            }
+        }
+        return false;
+    }
+
+    private String getChatFromChatBox() {
+        return chatEdiText.getText().toString();
+    }
+
+    private void clearChatBox() {
+        chatEdiText.getText().clear();
+    }
+
+    private void sendChatMessage(String chat) {
+        //Append chat from user
+        appendChatMessage(ChatWrapper.fromUser(chat));
+
+        //Then call API
+        mChatRetriever.sendChat(chat, this);
+    }
+
+    private void appendChatMessage(ChatWrapper chatWrapper) {
+        chatAdapter.appendChat(chatWrapper);
+    }
+
+    @Override
+    public void onResult(Chat chat) {
+        //On chat received -> Append to chat
+        appendChatMessage(ChatWrapper.fromAI(chat));
+    }
+
+    @Override
+    public void onError(Throwable t) {
+        displayError();
+    }
+
+    public void displayError() {
+        Toast.makeText(getContext(), R.string.can_not_chat, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        //Check if correct item
     }
 }

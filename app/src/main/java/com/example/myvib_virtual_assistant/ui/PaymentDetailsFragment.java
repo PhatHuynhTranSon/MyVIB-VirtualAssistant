@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant;
+package com.example.myvib_virtual_assistant.ui;
 
 import android.os.Bundle;
 
@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myvib_virtual_assistant.R;
 import com.example.myvib_virtual_assistant.data.models.Bill;
 import com.example.myvib_virtual_assistant.payment.BillingRetriever;
 import com.example.myvib_virtual_assistant.payment.BillingRetrieverCreator;
