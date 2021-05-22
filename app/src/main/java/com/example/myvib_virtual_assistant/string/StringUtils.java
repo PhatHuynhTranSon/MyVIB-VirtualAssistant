@@ -4,6 +4,7 @@ public class StringUtils {
     public static String formatCurrency(int currency) {
         return String.format("%,d VND", currency);
     }
+    public static String formatCurrency(String currency) { return currency + " VND"; }
 
     public static String formatAccount(String account) {
         return account.replaceAll(" ", "");

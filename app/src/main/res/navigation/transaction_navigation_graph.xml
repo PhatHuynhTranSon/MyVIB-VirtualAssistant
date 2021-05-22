@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/transaction_navigation_graph">
+    android:id="@+id/transaction_navigation_graph"
+    app:startDestination="@id/transactionChooseTypeFragment">
 
+    <fragment
+        android:id="@+id/transactionChooseTypeFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.TransactionChooseTypeFragment"
+        android:label="TransactionChooseTypeFragment" >
+        <action
+            android:id="@+id/ChooseToAdd"
+            app:destination="@id/transactionAddAccountFragment" />
+        <action
+            android:id="@+id/ChooseToExisting"
+            app:destination="@id/transactionExistingAccountFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactionAddAccountFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.TransactionAddAccountFragment"
+        android:label="TransactionAddAccountFragment" >
+        <action
+            android:id="@+id/AddToConfirm"
+            app:destination="@id/transactionConfirmFragment" />
+        <argument
+            android:name="accountId"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="bank"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactionExistingAccountFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.TransactionExistingAccountFragment"
+        android:label="TransactionExistingAccountFragment" >
+        <action
+            android:id="@+id/ExistingToAdd"
+            app:destination="@id/transactionAddAccountFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactionConfirmFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.TransactionConfirmFragment"
+        android:label="TransactionConfirmFragment" >
+        <action
+            android:id="@+id/ConfirmToSuccess"
+            app:destination="@id/transactionSuccessFragment" />
+        <argument
+            android:name="accountId"
+            app:argType="string" />
+        <argument
+            android:name="bank"
+            app:argType="string" />
+        <argument android:name="amount"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactionSuccessFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.TransactionSuccessFragment"
+        android:label="TransactionSuccessFragment" />
 </navigation>
