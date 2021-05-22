@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_predictionFragment_to_accountFragment2"
             app:destination="@id/accountFragment2" />
+        <argument
+            android:name="speech"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -79,7 +82,7 @@
         android:name="com.example.myvib_virtual_assistant.ui.SpeechToTextFragment"
         android:label="SpeechToTextFragment" >
         <action
-            android:id="@+id/action_speechToTextFragment_to_predictionFragment"
+            android:id="@+id/passSpeech"
             app:destination="@id/predictionFragment" />
     </fragment>
 </navigation>

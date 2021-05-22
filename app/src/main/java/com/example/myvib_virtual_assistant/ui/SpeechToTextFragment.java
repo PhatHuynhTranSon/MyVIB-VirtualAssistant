@@ -2,60 +2,116 @@ package com.example.myvib_virtual_assistant.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myvib_virtual_assistant.R;
+import com.example.myvib_virtual_assistant.speech.MySpeechRecognizer;
+import com.example.myvib_virtual_assistant.speech.MySpeechRecognizerListener;
+import com.example.myvib_virtual_assistant.speech.SpeechRecognizerBuilder;
 
-public class SpeechToTextFragment extends Fragment {
+public class SpeechToTextFragment extends Fragment implements View.OnClickListener, MySpeechRecognizerListener {
+    //Speech listener
+    MySpeechRecognizer mSpeechRecognizer;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    //Text for displaying messages
+    TextView speechPrompt, speechContent;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    //ImageView to start recognition
+    ImageView speechStartImage;
 
-    public SpeechToTextFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TechToSpeechFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SpeechToTextFragment newInstance(String param1, String param2) {
-        SpeechToTextFragment fragment = new SpeechToTextFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    //Navigation
+    NavController mNavController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_speech_to_text, container, false);
+        View view = inflater.inflate(R.layout.fragment_speech_to_text, container, false);
+
+        //Initialize view
+        speechPrompt = view.findViewById(R.id.speechPrompt);
+        speechContent = view.findViewById(R.id.speechContent);
+        speechStartImage = view.findViewById(R.id.speechStartImage);
+
+        //Set on click
+        speechStartImage.setOnClickListener(this);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mSpeechRecognizer = SpeechRecognizerBuilder.get(getContext());
+        mNavController = Navigation.findNavController(view);
+    }
+
+    @Override
+    public void onClick(View v) {
+        startRecognition();
+    }
+
+    public void startRecognition() {
+        mSpeechRecognizer.startListening(this);
+    }
+
+    public void updateSpeechContent(String content) {
+        speechContent.setText(content);
+    }
+
+    public void changeSpeechPromptToListening() {
+        speechPrompt.setText(R.string.speech_prompt);
+    }
+
+    public void changeSpeechPromptToStart() {
+        speechPrompt.setText(R.string.speech_guide);
+    }
+
+    public void navigateToPrediction(String speech) {
+        SpeechToTextFragmentDirections.PassSpeech action = SpeechToTextFragmentDirections.passSpeech(speech);
+        mNavController.navigate(action);
+    }
+
+    public void displayError() {
+        Toast.makeText(getContext(), R.string.speech_error ,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onReady() {
+        changeSpeechPromptToListening();
+    }
+
+    @Override
+    public void onEnd() {
+        changeSpeechPromptToStart();
+    }
+
+    @Override
+    public void onResult(String result) {
+        updateSpeechContent(result);
+        navigateToPrediction(result);
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+        Toast.makeText(getContext(), throwable.toString(), Toast.LENGTH_SHORT).show();
+        //displayError();
     }
 }

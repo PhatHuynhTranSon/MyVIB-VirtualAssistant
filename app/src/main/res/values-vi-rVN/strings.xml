@@ -46,4 +46,5 @@
     <string name="all_accounts">Tất cả tài khoản</string>
     <string name="customer_service">Dịch vụ khách hàng</string>
     <string name="user">Bạn</string>
+    <string name="speech_error">Đã xảy ra lỗi, Hãy thử lại</string>
 </resources>
