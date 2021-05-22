@@ -5,9 +5,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavAction;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
-import android.speech.SpeechRecognizer;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,15 @@ import com.example.myvib_virtual_assistant.prediction.IntentPredictorBuilder;
 import com.example.myvib_virtual_assistant.prediction.IntentPredictorListener;
 
 public class PredictionFragment extends Fragment implements IntentPredictorListener {
+    //Intent predictor
     IntentPredictor mIntentPredictor;
+
+    //Sentence as argument
+    String sentence;
+
+    //NavController
+    NavController mNavController;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +47,11 @@ public class PredictionFragment extends Fragment implements IntentPredictorListe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Init nav controller
+        mNavController = Navigation.findNavController(view);
+
         //Get the sentence
-        String sentence = PredictionFragmentArgs.fromBundle(getArguments()).getSpeech();
+        sentence = PredictionFragmentArgs.fromBundle(getArguments()).getSpeech();
 
         //Create intent predictor
         mIntentPredictor = IntentPredictorBuilder.create(getContext());
@@ -51,17 +64,37 @@ public class PredictionFragment extends Fragment implements IntentPredictorListe
     public void onResult(Intent intent) {
         //Display result
         if (intent == Intent.BALANCE) {
-            Toast.makeText(getContext(), "BALANCE", Toast.LENGTH_SHORT).show();
+            navigateToAccount();
         } else if (intent == Intent.BILL) {
-
+            navigateToBilling();
         } else if (intent == Intent.CHAT) {
-
+            navigateToChat();
         } else if (intent == Intent.TRANSFER) {
-
+            navigateToTransfer();
         } else if (intent == Intent.UNKNOWN) {
             finish();
             displayNotRecognized();
         }
+    }
+
+    private void navigateToAccount() {
+        PredictionFragmentDirections.PredictionToAccount action = PredictionFragmentDirections.PredictionToAccount(sentence);
+        mNavController.navigate(action);
+    }
+
+    private void navigateToBilling() {
+        PredictionFragmentDirections.PredictionToPayment action = PredictionFragmentDirections.PredictionToPayment(sentence);
+        mNavController.navigate(action);
+    }
+
+    private void navigateToChat() {
+        NavDirections action = PredictionFragmentDirections.PredictionToCustomerService();
+        mNavController.navigate(action);
+    }
+
+    private void navigateToTransfer() {
+        PredictionFragmentDirections.PredictionToTransaction action = PredictionFragmentDirections.PredictionToTransaction(sentence);
+        mNavController.navigate(action);
     }
 
     @Override
