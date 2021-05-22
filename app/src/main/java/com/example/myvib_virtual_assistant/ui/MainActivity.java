@@ -1,8 +1,10 @@
-package com.example.myvib_virtual_assistant;
+package com.example.myvib_virtual_assistant.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.myvib_virtual_assistant.R;
 
 public class MainActivity extends AppCompatActivity {
 

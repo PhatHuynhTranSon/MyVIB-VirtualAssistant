@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant;
+package com.example.myvib_virtual_assistant.ui;
 
 import android.os.Bundle;
 
@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class LanguageFragment extends Fragment {
+import com.example.myvib_virtual_assistant.R;
+
+public class TransactionFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,7 +21,7 @@ public class LanguageFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public LanguageFragment() {
+    public TransactionFragment() {
         // Required empty public constructor
     }
 
@@ -29,11 +31,11 @@ public class LanguageFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LanguageFragment.
+     * @return A new instance of fragment TransactionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LanguageFragment newInstance(String param1, String param2) {
-        LanguageFragment fragment = new LanguageFragment();
+    public static TransactionFragment newInstance(String param1, String param2) {
+        TransactionFragment fragment = new TransactionFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -54,6 +56,6 @@ public class LanguageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_language, container, false);
+        return inflater.inflate(R.layout.fragment_transaction, container, false);
     }
 }

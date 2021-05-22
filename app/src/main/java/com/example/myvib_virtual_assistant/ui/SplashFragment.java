@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant;
+package com.example.myvib_virtual_assistant.ui;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.myvib_virtual_assistant.R;
 
 public class SplashFragment extends Fragment {
     //Seconds to change to home screen
