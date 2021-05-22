@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.myvib_virtual_assistant.R;
+import com.example.myvib_virtual_assistant.languages.Language;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     //Save image view
@@ -27,6 +28,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     //NavController
     NavController mNavController;
+
+    //Language
+    String language;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,8 +61,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         //Nav controller
         mNavController = Navigation.findNavController(view);
+
+        //Get language
+        language = Language.getInstance(getContext()).getLanguage();
     }
 
     @Override
@@ -84,14 +92,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void navigateToAccount() {
-        mNavController.navigate(R.id.HomeToAccount);
+        HomeFragmentDirections.HomeToAccount action = HomeFragmentDirections.HomeToAccount(getAccountSentence());
+        mNavController.navigate(action);
     }
 
     private void navigateToTransaction() {
-        mNavController.navigate(R.id.HomeToTransaction);
+        HomeFragmentDirections.HomeToTransaction action = HomeFragmentDirections.HomeToTransaction(getTransactionSentence());
+        mNavController.navigate(action);
     }
 
     private void navigateToBilling() {
-        mNavController.navigate(R.id.HomeToPayment);
+        HomeFragmentDirections.HomeToPayment action = HomeFragmentDirections.HomeToPayment(getBillingSentence());
+        mNavController.navigate(action);
+    }
+
+    private String getAccountSentence() {
+        return getString(R.string.account);
+    }
+
+    private String getTransactionSentence() {
+        return getString(R.string.transfer);
+    }
+
+    private String getBillingSentence() {
+        return getString(R.string.billing);
     }
 }

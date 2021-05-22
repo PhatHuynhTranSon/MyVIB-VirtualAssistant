@@ -49,4 +49,7 @@
     <string name="speech_error">Đã xảy ra lỗi, Hãy thử lại</string>
     <string name="prediction_error">Không thể dự đoán</string>
     <string name="can_not_account">Không thể xem thông tin tài khoản</string>
+    <string name="account">Tài khoản</string>
+    <string name="transfer">Chuyển tiền</string>
+    <string name="billing">Thanh toán</string>
 </resources>

@@ -50,4 +50,7 @@
     <string name="speech_error">Error encounter. Try again</string>
     <string name="prediction_error">Can not make prediction</string>
     <string name="can_not_account">Can not retrieve your account information</string>
+    <string name="account">Account</string>
+    <string name="transfer">Transfer</string>
+    <string name="billing">Billing</string>
 </resources>
