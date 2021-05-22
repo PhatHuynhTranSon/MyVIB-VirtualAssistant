@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VIBVirtualTeller</string>
+    <string name="app_name">MyVIBAssistant</string>
     <string name="choose_language">Choose your language</string>
     <string name="choose_language_prompt">Select your favourable language</string>
     <string name="english_selection">English</string>

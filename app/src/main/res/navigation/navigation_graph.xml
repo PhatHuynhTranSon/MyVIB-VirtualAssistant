@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/accountFragment2">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/accountFragment2"
         android:name="com.example.myvib_virtual_assistant.AccountFragment"
