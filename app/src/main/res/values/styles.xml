@@ -7,4 +7,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Divider Theme -->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/colorTrueGray</item>
+    </style>
+
+    <!--Small divider as underline-->
+    <style name="SmallDivider">
+        <item name="android:layout_width">75sp</item>
+        <item name="android:layout_height">4sp</item>
+        <item name="android:background">@color/colorTrueSecondary</item>
+    </style>
 </resources>

@@ -1,3 +1,50 @@
 <resources>
-    <string name="app_name">MyVIB-Virtual-Assistant</string>
+    <string name="app_name">VIBVirtualTeller</string>
+    <string name="choose_language">Choose your language</string>
+    <string name="choose_language_prompt">Select your favourable language</string>
+    <string name="english_selection">English</string>
+    <string name="vietnamese_selection">Tiếng Việt</string>
+    <string name="often_do">Things you often do</string>
+    <string name="frequently_performed">Frequently performed tasks</string>
+    <string name="account_header">Account</string>
+    <string name="account_desc">View account details</string>
+    <string name="transaction_header">Transaction</string>
+    <string name="transaction_desc">Make a transaction</string>
+    <string name="billings_header">Billings</string>
+    <string name="billings_desc">Pay for bills</string>
+    <string name="help_header">How can I help ?</string>
+    <string name="help_description">Say anything you want to do</string>
+    <string name="speech_prompt">Please say anything</string>
+    <string name="speech_processing">Processing</string>
+    <string name="empty_text" translatable="false" />
+    <string name="speech_guide">Tab here and talk</string>
+    <string name="making_prediction">Making prediction</string>
+    <string name="edit">Click to edit</string>
+    <string name="can_not_predict">Can not predict your intent</string>
+    <string name="summary_header">Summary</string>
+    <string name="total_balance">Total Balance</string>
+    <string name="total_saving">Total Saving</string>
+    <string name="credit_card">Total credit card</string>
+    <string name="electricity">Electricity bill</string>
+    <string name="water">Water bill</string>
+    <string name="phone">Phone bill</string>
+    <string name="payment_header">All payments</string>
+    <string name="confirm_button">Confirm</string>
+    <string name="successful_payment">Successful payment</string>
+    <string name="choose_account">Choose account</string>
+    <string name="existing_account">Existing account</string>
+    <string name="new_account">New account</string>
+    <string name="add_new_account">Add new account</string>
+    <string name="select_an_account">Select an account</string>
+    <string name="select_a_bank">Select a bank</string>
+    <string name="choose_amount">Choose the amount</string>
+    <string name="say_account">Say the account</string>
+    <string name="say_bank">Say the bank</string>
+    <string name="confirm_transaction">Confirm transaction</string>
+    <string name="amount_header">Amount</string>
+    <string name="successful_transaction">Successful transaction</string>
+    <string name="all_accounts">All accounts</string>
+    <string name="customer_service">Customer service</string>
+    <string name="ai" translatable="false">AI</string>
+    <string name="user">You</string>
 </resources>
