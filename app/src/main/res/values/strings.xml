@@ -19,7 +19,7 @@
     <string name="empty_text" translatable="false" />
     <string name="speech_guide">Tab here and talk</string>
     <string name="making_prediction">Making prediction</string>
-    <string name="edit">Click to edit</string>
+    <string name="edit">Click above to edit</string>
     <string name="can_not_predict">Can not predict your intent</string>
     <string name="summary_header">Summary</string>
     <string name="total_balance">Total Balance</string>

@@ -19,7 +19,7 @@
     <string name="speech_processing">Đang xử lí</string>
     <string name="speech_guide">Nhán vào đây để nói</string>
     <string name="making_prediction">Đang dự đoán</string>
-    <string name="edit">Nhấn để sửa</string>
+    <string name="edit">Nhấn phía trên để sửa</string>
     <string name="can_not_predict">Không thể dự đoán</string>
     <string name="summary_header">Chi tiết</string>
     <string name="total_balance">Số dư</string>

@@ -9,6 +9,15 @@
         android:name="com.example.myvib_virtual_assistant.ui.AccountFragment"
         android:label="AccountFragment" >
         <argument android:name="sentence" />
+        <action
+            android:id="@+id/AccountToPrediction"
+            app:destination="@id/predictionFragment"
+            app:popUpTo="@+id/speechToTextFragment"
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 
     <fragment
@@ -31,6 +40,15 @@
         android:name="com.example.myvib_virtual_assistant.ui.PaymentFragment"
         android:label="PaymentFragment" >
         <argument android:name="sentence" />
+        <action
+            android:id="@+id/BillingToPrediction"
+            app:destination="@id/predictionFragment"
+            app:popUpTo="@+id/speechToTextFragment"
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 
     <fragment
@@ -95,6 +113,15 @@
         android:name="com.example.myvib_virtual_assistant.ui.TransactionFragment"
         android:label="TransactionFragment" >
         <argument android:name="sentence" />
+        <action
+            android:id="@+id/TransactionToPrediction"
+            app:destination="@id/predictionFragment"
+            app:popUpTo="@+id/speechToTextFragment"
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 
     <fragment

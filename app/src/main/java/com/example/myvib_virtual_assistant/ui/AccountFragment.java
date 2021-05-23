@@ -6,7 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +26,7 @@ import com.example.myvib_virtual_assistant.data.models.Balance;
 import com.example.myvib_virtual_assistant.string.StringUtils;
 
 
-public class AccountFragment extends Fragment implements AccountBalanceListener {
+public class AccountFragment extends Fragment implements AccountBalanceListener, View.OnKeyListener {
     //Arguments
     String sentence;
 
@@ -39,6 +42,9 @@ public class AccountFragment extends Fragment implements AccountBalanceListener 
 
     //CardView
     CardView cardView;
+
+    //NavController
+    NavController mNavController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,9 @@ public class AccountFragment extends Fragment implements AccountBalanceListener 
         progressBar = view.findViewById(R.id.balanceProgressBar);
         cardView = view.findViewById(R.id.summaryCard);
 
+        //Set intent edit text on enter
+        intentEditText.setOnKeyListener(this);
+
         //Set the progress bar to Visible and CardView to invisible
         hideCardView();
         showProgress();
@@ -71,6 +80,9 @@ public class AccountFragment extends Fragment implements AccountBalanceListener 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Nav controller
+        mNavController = Navigation.findNavController(view);
 
         //Account retriever
         mAccountRetriever = AccountBalanceRetrieverBuilder.create();
@@ -122,5 +134,29 @@ public class AccountFragment extends Fragment implements AccountBalanceListener 
 
     private void showCardView() {
         cardView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        //Check if right component
+        if (v.getId() == R.id.intentEditText) {
+            //Check if Enter is click
+            if ((event.getAction() == KeyEvent.ACTION_DOWN)
+                    && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                //Navigate to prediction fragment
+                navigateToPrediction();
+            }
+        }
+        return false;
+    }
+
+    private void navigateToPrediction() {
+        AccountFragmentDirections.AccountToPrediction action = AccountFragmentDirections
+                .AccountToPrediction(getIntentText());
+        mNavController.navigate(action);
+    }
+
+    private String getIntentText() {
+        return intentEditText.getText().toString();
     }
 }
