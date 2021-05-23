@@ -118,9 +118,6 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
 
     @Override
     public void onBankLocationsResult(List<Location> results) {
-        //Log
-        Log.i("ADDDDD", String.valueOf(results.size()));
-
         //Hide loading bar
         showRecyclerView();
         hideProgress();
@@ -145,9 +142,6 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
 
     @Override
     public void onDeviceLocationResult(Coordinate coordinate) {
-        //DISPLAY
-        Log.i("LOC", String.valueOf(coordinate.getLat()));
-
         //Get latitude, longitude and call bank locations
         mBankLocationRetriever.getNearestLocations(
                 coordinate.getLat(),
