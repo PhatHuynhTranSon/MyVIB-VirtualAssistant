@@ -71,6 +71,8 @@ public class PredictionFragment extends Fragment implements IntentPredictorListe
             navigateToChat();
         } else if (intent == Intent.TRANSFER) {
             navigateToTransfer();
+        } else if (intent == Intent.NEAREST) {
+            navigateToLocation();
         } else if (intent == Intent.UNKNOWN) {
             finish();
             displayNotRecognized();
@@ -94,6 +96,11 @@ public class PredictionFragment extends Fragment implements IntentPredictorListe
 
     private void navigateToTransfer() {
         PredictionFragmentDirections.PredictionToTransaction action = PredictionFragmentDirections.PredictionToTransaction(sentence);
+        mNavController.navigate(action);
+    }
+
+    private void navigateToLocation() {
+        PredictionFragmentDirections.PredictionToLocation action = PredictionFragmentDirections.PredictionToLocation(sentence);
         mNavController.navigate(action);
     }
 

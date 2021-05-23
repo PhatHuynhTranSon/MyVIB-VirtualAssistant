@@ -12,6 +12,8 @@ public class IntentMapper {
             return Intent.TRANSFER;
         } else if (intent.equals("CHAT")) {
             return Intent.CHAT;
+        } else if (intent.equals("NEAREST")) {
+            return Intent.NEAREST;
         } else {
             return Intent.UNKNOWN;
         }

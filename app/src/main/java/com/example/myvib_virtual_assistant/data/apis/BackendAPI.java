@@ -4,7 +4,9 @@ import com.example.myvib_virtual_assistant.data.models.Accounts;
 import com.example.myvib_virtual_assistant.data.models.Balance;
 import com.example.myvib_virtual_assistant.data.models.Bill;
 import com.example.myvib_virtual_assistant.data.models.Chat;
+import com.example.myvib_virtual_assistant.data.models.Locations;
 import com.example.myvib_virtual_assistant.data.models.Prediction;
+import com.example.myvib_virtual_assistant.data.requests.LocationRequestBody;
 import com.example.myvib_virtual_assistant.data.requests.PredictionRequestBody;
 
 import retrofit2.Call;
@@ -33,4 +35,7 @@ public interface BackendAPI {
 
     @GET("/accounts")
     Call<Accounts> getAccounts();
+
+    @POST("/locations")
+    Call<Locations> getNearestLocations(@Body LocationRequestBody body);
 }

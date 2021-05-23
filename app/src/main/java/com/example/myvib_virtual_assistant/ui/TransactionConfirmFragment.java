@@ -46,7 +46,7 @@ public class TransactionConfirmFragment extends Fragment implements View.OnClick
 
         //Views
         confirmButton = view.findViewById(R.id.confirmButton);
-        accountText = view.findViewById(R.id.accountText);
+        accountText = view.findViewById(R.id.addressText);
         amountText = view.findViewById(R.id.amountText);
 
         //Set on click listener

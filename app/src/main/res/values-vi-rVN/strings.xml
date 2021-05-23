@@ -57,4 +57,10 @@
     <string name="can_not_chat">Khôn thể chat. Vui lòng thử lại</string>
     <string name="can_not_speech">Không thể thực hiện. Thử lại</string>
     <string name="can_not_accounts">Không thể lấy danh sách tài khoản</string>
+    <string name="location_near_you">Ngân hàng gần bạn</string>
+    <string name="opening">Trạng thái</string>
+    <string name="location_open">Đang mở</string>
+    <string name="location_close">Đang đóng</string>
+    <string name="location_unknown">Không thông tin</string>
+    <string name="can_not_get_nearest">Không thể tìm thấy ngân hàng</string>
 </resources>

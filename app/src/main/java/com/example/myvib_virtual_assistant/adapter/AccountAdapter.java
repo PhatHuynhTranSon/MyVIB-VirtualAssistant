@@ -1,6 +1,5 @@
 package com.example.myvib_virtual_assistant.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +36,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
             super(itemView);
             view = itemView;
             cardView = view.findViewById(R.id.accountCardView);
-            accountText = view.findViewById(R.id.accountText);
+            accountText = view.findViewById(R.id.addressText);
             nameText = view.findViewById(R.id.nameText);
 
             //Set on click listener
