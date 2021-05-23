@@ -54,7 +54,7 @@
     <string name="billing">Thanh toán</string>
     <string name="can_not_payment">Không thể xem hóa đơn. Thử lại</string>
     <string name="greetings">Xin chào, tôi có thể giúp gì cho bạn ?</string>
-    <string name="can_not_chat">Khôn thể chat. Vui lòng thử lại</string>
+    <string name="can_not_chat">Không thể chat. Vui lòng thử lại</string>
     <string name="can_not_speech">Không thể thực hiện. Thử lại</string>
     <string name="can_not_accounts">Không thể lấy danh sách tài khoản</string>
     <string name="location_near_you">Ngân hàng gần bạn</string>
