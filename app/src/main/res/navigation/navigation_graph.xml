@@ -192,5 +192,8 @@
         <argument
             android:name="sentence"
             app:argType="string" />
+        <action
+            android:id="@+id/LocationToPrediction"
+            app:destination="@id/predictionFragment" />
     </fragment>
 </navigation>

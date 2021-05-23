@@ -5,10 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +33,7 @@ import com.example.myvib_virtual_assistant.location.nearest.NearestLocationRetri
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocationFragment extends Fragment implements NearestLocationRetrieverListener, DeviceLocationRetrieverListener {
+public class LocationFragment extends Fragment implements NearestLocationRetrieverListener, DeviceLocationRetrieverListener, View.OnKeyListener {
     //Hold sentence
     String sentence;
 
@@ -50,6 +53,9 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
     //Device location retriever
     DeviceLocationRetriever mDeviceLocationRetriever;
 
+    //NavController
+    NavController mNavController;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +72,9 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
         locationRecyclerView = view.findViewById(R.id.locationRecyclerView);
         progressBar = view.findViewById(R.id.locationProgressBar);
 
+        //Set intent edit text on enter
+        intentEditText.setOnKeyListener(this);
+
         return view;
     }
 
@@ -78,9 +87,15 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
         hideRecyclerView();
 
         initializeEditText();
+        initializeNavController(view);
         initializeRecyclerView();
         initializeBankLocationRetriever();
         initializeDeviceLocationRetriever();
+    }
+
+    private void initializeNavController(View view) {
+        //Nav controller
+        mNavController = Navigation.findNavController(view);
     }
 
     private void initializeEditText() {
@@ -173,5 +188,29 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
 
     public void showRecyclerView() {
         locationRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        //Check if right component
+        if (v.getId() == R.id.intentEditText) {
+            //Check if Enter is click
+            if ((event.getAction() == KeyEvent.ACTION_DOWN)
+                    && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                //Navigate to prediction fragment
+                navigateToPrediction();
+            }
+        }
+        return false;
+    }
+
+    private void navigateToPrediction() {
+        LocationFragmentDirections.LocationToPrediction action =
+                LocationFragmentDirections.LocationToPrediction(getIntentText());
+        mNavController.navigate(action);
+    }
+
+    private String getIntentText() {
+        return intentEditText.getText().toString();
     }
 }
