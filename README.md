@@ -29,6 +29,10 @@ Android
 ## Features
 The application currently has the folling features
 
+## Homepage and Choosing language
+Customers can choose to use English or Vietnamese for the application
+![Home page and Language](https://vib-competition-bucket-resource.s3-ap-southeast-2.amazonaws.com/Language.png)
+
 ### View current balance (Voice activated)
 This function can be used to view the current user's account details (using dummy data only). This feature can be activated by clicking on "Talk" button and saying 
 phrases such as "View account" or "Account details"
