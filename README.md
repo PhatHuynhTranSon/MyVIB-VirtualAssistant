@@ -1,6 +1,7 @@
 # MyVIB-VirtualAssistant
 
 ## Description
+![MyVIB Assistant Advertisement](https://vib-competition-bucket-resource.s3-ap-southeast-2.amazonaws.com/ADVERT.png)
 A virtual assistant application implemented for VIB hackathon competition
 
 ## Platform
