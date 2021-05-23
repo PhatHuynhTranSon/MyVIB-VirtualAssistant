@@ -5,6 +5,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/MyriadTextViewStyle</item>
+        <item name="android:buttonStyle">@style/MyriadButtonStyle</item>
+    </style>
+
+    <!--Fonts for textview and button -->
+    <style name="MyriadTextViewStyle" parent="android:Widget.TextView">
+        <item name="fontPath">myriad-pro.ttf</item>
+    </style>
+
+    <style name="MyriadButtonStyle" parent="android:Widget.Material.Button">
+        <item name="fontPath">myriad-pro.ttf</item>
     </style>
 
     <!--Divider Theme -->

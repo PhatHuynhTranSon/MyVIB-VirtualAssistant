@@ -49,4 +49,8 @@ dependencies {
 
     //Google Play services
     implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    //OTF-fonts
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
 }
