@@ -48,6 +48,11 @@ This function can be used to help users to transfer money to another account. Th
 ![Transfer money](https://vib-competition-bucket-resource.s3-ap-southeast-2.amazonaws.com/Transfer+1.png)
 ![Transfer money](https://vib-competition-bucket-resource.s3-ap-southeast-2.amazonaws.com/Transfer+2.png)
 
+### Find nearby banks:
+This function can help users to find the nearest banks or atms using the current location of their phone (using GPS or Network provider). By saying "Find all banks near me" in English or Vietnamese to the app, all the relevant bank will be displayed
+
+![View nearby banks](https://vib-competition-bucket-resource.s3-ap-southeast-2.amazonaws.com/Find.jpg)
+
 ### Customer service
 By saying "Customer service" or "I need some help" to the assistant, users wil be taken to a Customer Serivce chat session where they can chat to an AI agent for help. Just type in the text box or clicking on the talking button to use your voice.
 ![Customer service](https://vib-competition-bucket-resource.s3-ap-southeast-2.amazonaws.com/CustomerService.png)
