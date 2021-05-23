@@ -17,7 +17,7 @@
     <string name="help_description">Hãy cho tôi biết bạn muốn làm gì</string>
     <string name="speech_prompt">Hãy nói</string>
     <string name="speech_processing">Đang xử lí</string>
-    <string name="speech_guide">Nhán vào đây để nói</string>
+    <string name="speech_guide">Nhấn vào đây để nói</string>
     <string name="making_prediction">Đang dự đoán</string>
     <string name="edit">Nhấn phía trên để sửa</string>
     <string name="can_not_predict">Không thể dự đoán</string>
