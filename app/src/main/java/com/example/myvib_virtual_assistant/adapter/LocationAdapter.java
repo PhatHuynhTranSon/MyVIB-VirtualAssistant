@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myvib_virtual_assistant.R;
 import com.example.myvib_virtual_assistant.data.models.Location;
+import com.example.myvib_virtual_assistant.string.StringUtils;
 
 import java.util.List;
 
@@ -38,11 +39,16 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
 
         //Get resource
         Resources resources = holder.view.getResources();
+        String status = resources.getString(mapLocationStatus(location.getIsOpen()));
 
         //Populate field
-        holder.openingText.setText(location.getIsOpen());
+        holder.openingText.setText(status);
         holder.nameText.setText(location.getName());
         holder.addressText.setText(location.getAddress());
+    }
+
+    private int mapLocationStatus(String status) {
+        return StringUtils.mapLocationStatus(status);
     }
 
     @Override
