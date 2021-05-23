@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.location;
+package com.example.myvib_virtual_assistant.location.nearest;
 
 import com.example.myvib_virtual_assistant.data.apis.BackendAPIBuilder;
 

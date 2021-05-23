@@ -15,7 +15,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Request permission
         requestRecordAudioPermission();
+        requestLocationPermission();
     }
 
     //Request permission to listen to audio
@@ -27,6 +30,24 @@ public class MainActivity extends AppCompatActivity {
             // this permission is needed
             if (checkCallingOrSelfPermission(requiredPermission) == PackageManager.PERMISSION_DENIED) {
                 requestPermissions(new String[]{requiredPermission}, 101);
+            }
+        }
+    }
+
+    //Request permission to access location
+    private void requestLocationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            String fineLocationPermission = Manifest.permission.ACCESS_FINE_LOCATION;
+            String coarseLocationPermission = Manifest.permission.ACCESS_COARSE_LOCATION;
+
+            // If the user previously denied this permission then show a message explaining why
+            // this permission is needed
+            if (checkCallingOrSelfPermission(fineLocationPermission) == PackageManager.PERMISSION_DENIED) {
+                requestPermissions(new String[]{fineLocationPermission}, 101);
+            }
+
+            if (checkCallingOrSelfPermission(coarseLocationPermission) == PackageManager.PERMISSION_DENIED) {
+                requestPermissions(new String[]{coarseLocationPermission}, 102);
             }
         }
     }

@@ -8,23 +8,29 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.myvib_virtual_assistant.R;
 import com.example.myvib_virtual_assistant.adapter.LocationAdapter;
 import com.example.myvib_virtual_assistant.data.models.Location;
-import com.example.myvib_virtual_assistant.location.NearestLocationRetriever;
-import com.example.myvib_virtual_assistant.location.NearestLocationRetrieverBuilder;
-import com.example.myvib_virtual_assistant.location.NearestLocationRetrieverListener;
+import com.example.myvib_virtual_assistant.location.device.Coordinate;
+import com.example.myvib_virtual_assistant.location.device.DeviceLocationRetriever;
+import com.example.myvib_virtual_assistant.location.device.DeviceLocationRetrieverBuilder;
+import com.example.myvib_virtual_assistant.location.device.DeviceLocationRetrieverListener;
+import com.example.myvib_virtual_assistant.location.nearest.NearestLocationRetriever;
+import com.example.myvib_virtual_assistant.location.nearest.NearestLocationRetrieverBuilder;
+import com.example.myvib_virtual_assistant.location.nearest.NearestLocationRetrieverListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocationFragment extends Fragment implements NearestLocationRetrieverListener {
+public class LocationFragment extends Fragment implements NearestLocationRetrieverListener, DeviceLocationRetrieverListener {
     //Hold sentence
     String sentence;
 
@@ -32,11 +38,17 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
     RecyclerView locationRecyclerView;
     LocationAdapter locationAdapter;
 
+    //Progress bar
+    ProgressBar progressBar;
+
     //Views
     EditText intentEditText;
 
-    //Location Retriever
-    NearestLocationRetriever mLocationRetriever;
+    //Bank Location Retriever
+    NearestLocationRetriever mBankLocationRetriever;
+
+    //Device location retriever
+    DeviceLocationRetriever mDeviceLocationRetriever;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +64,7 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
         //Populate test
         intentEditText = view.findViewById(R.id.intentEditText);
         locationRecyclerView = view.findViewById(R.id.locationRecyclerView);
+        progressBar = view.findViewById(R.id.locationProgressBar);
 
         return view;
     }
@@ -60,9 +73,14 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Show loading bar
+        showProgress();
+        hideRecyclerView();
+
         initializeEditText();
         initializeRecyclerView();
-        initializeLocationRetriever();
+        initializeBankLocationRetriever();
+        initializeDeviceLocationRetriever();
     }
 
     private void initializeEditText() {
@@ -86,16 +104,27 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
         locationRecyclerView.setAdapter(locationAdapter);
     }
 
-    private void initializeLocationRetriever() {
+    private void initializeBankLocationRetriever() {
         //Create
-        mLocationRetriever = NearestLocationRetrieverBuilder.get();
+        mBankLocationRetriever = NearestLocationRetrieverBuilder.get();
+    }
 
-        //Start listening
-        mLocationRetriever.getNearestLocations(10.756423906195085, 106.64508293833768, this);
+    private void initializeDeviceLocationRetriever() {
+        //Create
+        mDeviceLocationRetriever = DeviceLocationRetrieverBuilder.get(getContext());
+        //Get location
+        mDeviceLocationRetriever.getLocation(this);
     }
 
     @Override
-    public void onResult(List<Location> results) {
+    public void onBankLocationsResult(List<Location> results) {
+        //Log
+        Log.i("ADDDDD", String.valueOf(results.size()));
+
+        //Hide loading bar
+        showRecyclerView();
+        hideProgress();
+
         //Display
         addLocationsToRecyclerView(results);
     }
@@ -105,12 +134,50 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
     }
 
     @Override
-    public void onError(Throwable t) {
+    public void onBankLocationsError(Throwable t) {
         //Display error
-        displayError();
+        displayBankLocationsError();
     }
 
-    private void displayError() {
+    private void displayBankLocationsError() {
         Toast.makeText(getContext(), R.string.can_not_get_nearest, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDeviceLocationResult(Coordinate coordinate) {
+        //DISPLAY
+        Log.i("LOC", String.valueOf(coordinate.getLat()));
+
+        //Get latitude, longitude and call bank locations
+        mBankLocationRetriever.getNearestLocations(
+                coordinate.getLat(),
+                coordinate.getLon(),
+                this
+        );
+    }
+
+    @Override
+    public void onDeviceLocationError(Throwable t) {
+        displayDeviceLocationError();
+    }
+
+    private void displayDeviceLocationError() {
+        Toast.makeText(getContext(), R.string.can_not_get_location, Toast.LENGTH_SHORT).show();
+    }
+
+    public void hideProgress() {
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideRecyclerView() {
+        locationRecyclerView.setVisibility(View.INVISIBLE);
+    }
+
+    public void showRecyclerView() {
+        locationRecyclerView.setVisibility(View.VISIBLE);
     }
 }

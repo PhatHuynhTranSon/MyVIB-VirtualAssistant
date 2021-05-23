@@ -64,4 +64,5 @@
     <string name="location_close">Is closed</string>
     <string name="location_unknown">No info</string>
     <string name="can_not_get_nearest">Can not retrieve banks near you</string>
+    <string name="can_not_get_location">Can not get device location</string>
 </resources>

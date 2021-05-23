@@ -63,4 +63,5 @@
     <string name="location_close">Đang đóng</string>
     <string name="location_unknown">Không thông tin</string>
     <string name="can_not_get_nearest">Không thể tìm thấy ngân hàng</string>
+    <string name="can_not_get_location">Không thể định vị điện thoại</string>
 </resources>

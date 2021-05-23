@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.location;
+package com.example.myvib_virtual_assistant.location.nearest;
 
 import com.example.myvib_virtual_assistant.data.apis.BackendAPI;
 import com.example.myvib_virtual_assistant.data.models.Locations;
@@ -25,12 +25,12 @@ public class APINearestLocationRetriever implements NearestLocationRetriever, Ca
 
     @Override
     public void onResponse(Call<Locations> call, Response<Locations> response) {
-        if (response.body() != null) mListener.onResult(response.body().getLocations());
-        else mListener.onError(new Exception("Response body is null"));
+        if (response.body() != null) mListener.onBankLocationsResult(response.body().getLocations());
+        else mListener.onBankLocationsError(new Exception("Response body is null"));
     }
 
     @Override
     public void onFailure(Call<Locations> call, Throwable t) {
-        mListener.onError(t);
+        mListener.onBankLocationsError(t);
     }
 }
