@@ -10,6 +10,7 @@
         android:label="AccountFragment" >
         <argument android:name="sentence" />
     </fragment>
+
     <fragment
         android:id="@+id/languageFragment"
         android:name="com.example.myvib_virtual_assistant.ui.LanguageFragment"
@@ -18,14 +19,20 @@
             android:id="@+id/action_languageFragment_to_homeFragment2"
             app:destination="@id/homeFragment2"
             app:popUpTo="@+id/navigation_graph"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
+
     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.example.myvib_virtual_assistant.ui.PaymentFragment"
         android:label="PaymentFragment" >
         <argument android:name="sentence" />
     </fragment>
+
     <fragment
         android:id="@+id/predictionFragment"
         android:name="com.example.myvib_virtual_assistant.ui.PredictionFragment"
@@ -34,17 +41,29 @@
             android:id="@+id/PredictionToTransaction"
             app:destination="@id/transactionFragment"
             app:popUpTo="@+id/speechToTextFragment"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/PredictionToPayment"
             app:destination="@id/paymentFragment"
             app:popUpTo="@+id/speechToTextFragment"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/PredictionToAccount"
             app:destination="@id/accountFragment2"
             app:popUpTo="@+id/speechToTextFragment"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <argument
             android:name="speech"
             app:argType="string" />
@@ -52,8 +71,13 @@
             android:id="@+id/PredictionToCustomerService"
             app:destination="@id/customerServiceFragment"
             app:popUpTo="@+id/speechToTextFragment"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.myvib_virtual_assistant.ui.SplashFragment"
@@ -72,34 +96,57 @@
         android:label="TransactionFragment" >
         <argument android:name="sentence" />
     </fragment>
+
     <fragment
         android:id="@+id/customerServiceFragment"
         android:name="com.example.myvib_virtual_assistant.ui.CustomerServiceFragment"
         android:label="fragment_customer_service"
         tools:layout="@layout/fragment_customer_service" />
+
     <fragment
         android:id="@+id/homeFragment2"
         android:name="com.example.myvib_virtual_assistant.ui.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment2_to_speechToTextFragment"
-            app:destination="@id/speechToTextFragment" />
+            app:destination="@id/speechToTextFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/HomeToTransaction"
-            app:destination="@id/transactionFragment" />
+            app:destination="@id/transactionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/HomeToPayment"
-            app:destination="@id/paymentFragment" />
+            app:destination="@id/paymentFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/HomeToAccount"
-            app:destination="@id/accountFragment2" />
+            app:destination="@id/accountFragment2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
+
     <fragment
         android:id="@+id/speechToTextFragment"
         android:name="com.example.myvib_virtual_assistant.ui.SpeechToTextFragment"
         android:label="SpeechToTextFragment" >
         <action
             android:id="@+id/passSpeech"
-            app:destination="@id/predictionFragment" />
+            app:destination="@id/predictionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 </navigation>
