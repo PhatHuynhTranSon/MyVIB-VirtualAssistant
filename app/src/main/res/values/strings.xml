@@ -57,4 +57,5 @@
     <string name="greetings">Hello, how can I help you ?</string>
     <string name="can_not_chat">Can not chat to CustomerService. Try again</string>
     <string name="can_not_speech">Can not perform speech tp text</string>
+    <string name="can_not_accounts">Can not retrieve account. Try again</string>
 </resources>

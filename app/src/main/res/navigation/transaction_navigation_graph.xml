@@ -48,7 +48,9 @@
         android:label="TransactionConfirmFragment" >
         <action
             android:id="@+id/ConfirmToSuccess"
-            app:destination="@id/transactionSuccessFragment" />
+            app:destination="@id/transactionSuccessFragment"
+            app:popUpTo="@+id/transaction_navigation_graph"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="accountId"
             app:argType="string" />

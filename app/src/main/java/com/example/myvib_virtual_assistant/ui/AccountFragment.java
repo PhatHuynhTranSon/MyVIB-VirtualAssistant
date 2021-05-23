@@ -115,12 +115,10 @@ public class AccountFragment extends Fragment implements AccountBalanceListener 
     }
 
     private void hideCardView() {
-        progressBar.setVisibility(View.VISIBLE);
-    }
-
-    private void showProgress() {
         cardView.setVisibility(View.INVISIBLE);
     }
+
+    private void showProgress() { progressBar.setVisibility(View.VISIBLE); }
 
     private void showCardView() {
         cardView.setVisibility(View.VISIBLE);

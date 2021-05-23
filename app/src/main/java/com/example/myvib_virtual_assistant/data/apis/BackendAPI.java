@@ -1,5 +1,6 @@
 package com.example.myvib_virtual_assistant.data.apis;
 
+import com.example.myvib_virtual_assistant.data.models.Accounts;
 import com.example.myvib_virtual_assistant.data.models.Balance;
 import com.example.myvib_virtual_assistant.data.models.Bill;
 import com.example.myvib_virtual_assistant.data.models.Chat;
@@ -29,4 +30,7 @@ public interface BackendAPI {
 
     @GET("/bills")
     Call<Bill> getBills();
+
+    @GET("/accounts")
+    Call<Accounts> getAccounts();
 }

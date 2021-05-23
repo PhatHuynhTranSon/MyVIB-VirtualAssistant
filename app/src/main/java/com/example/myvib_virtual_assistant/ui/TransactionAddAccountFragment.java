@@ -93,7 +93,7 @@ public class TransactionAddAccountFragment extends Fragment implements View.OnCl
 
         //Strings
         account = TransactionAddAccountFragmentArgs.fromBundle(getArguments()).getAccountId();
-        bank = TransactionAddAccountFragmentArgs.fromBundle(getArguments()).getAccountId();
+        bank = TransactionAddAccountFragmentArgs.fromBundle(getArguments()).getBank();
 
         //Display account and bank
         setAccount(account);

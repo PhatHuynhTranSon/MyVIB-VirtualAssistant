@@ -56,4 +56,5 @@
     <string name="greetings">Xin chào, tôi có thể giúp gì cho bạn ?</string>
     <string name="can_not_chat">Khôn thể chat. Vui lòng thử lại</string>
     <string name="can_not_speech">Không thể thực hiện. Thử lại</string>
+    <string name="can_not_accounts">Không thể lấy danh sách tài khoản</string>
 </resources>
