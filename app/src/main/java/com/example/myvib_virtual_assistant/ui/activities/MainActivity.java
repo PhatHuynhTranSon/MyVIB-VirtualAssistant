@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
             // If the user previously denied this permission then show a message explaining why
             // this permission is needed
-            if (checkCallingOrSelfPermission(requiredPermission) == PackageManager.PERMISSION_DENIED) {
+            if (checkCallingOrSelfPermission(requiredPermission) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{requiredPermission}, 101);
             }
         }
@@ -62,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
             // If the user previously denied this permission then show a message explaining why
             // this permission is needed
-            if (checkCallingOrSelfPermission(fineLocationPermission) == PackageManager.PERMISSION_DENIED) {
-                requestPermissions(new String[]{fineLocationPermission}, 101);
+            if (checkCallingOrSelfPermission(fineLocationPermission) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{fineLocationPermission}, 102);
             }
 
-            if (checkCallingOrSelfPermission(coarseLocationPermission) == PackageManager.PERMISSION_DENIED) {
-                requestPermissions(new String[]{coarseLocationPermission}, 102);
+            if (checkCallingOrSelfPermission(coarseLocationPermission) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{coarseLocationPermission}, 103);
             }
         }
     }

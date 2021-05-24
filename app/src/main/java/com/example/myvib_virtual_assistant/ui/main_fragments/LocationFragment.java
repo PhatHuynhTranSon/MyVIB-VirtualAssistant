@@ -126,7 +126,7 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
 
     private void initializeDeviceLocationRetriever() {
         //Create
-        mDeviceLocationRetriever = DeviceLocationRetrieverBuilder.getFused(getContext());
+        mDeviceLocationRetriever = DeviceLocationRetrieverBuilder.getOriginal(getContext());
         //Get location
         mDeviceLocationRetriever.getLocation(this);
     }
