@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.ui;
+package com.example.myvib_virtual_assistant.ui.main_fragments;
 
 import android.os.Bundle;
 
@@ -19,6 +19,7 @@ import com.example.myvib_virtual_assistant.R;
 import com.example.myvib_virtual_assistant.speech.MySpeechRecognizer;
 import com.example.myvib_virtual_assistant.speech.MySpeechRecognizerListener;
 import com.example.myvib_virtual_assistant.speech.SpeechRecognizerBuilder;
+import com.example.myvib_virtual_assistant.ui.SpeechToTextFragmentDirections;
 
 public class SpeechToTextFragment extends Fragment implements View.OnClickListener, MySpeechRecognizerListener {
     //Speech listener

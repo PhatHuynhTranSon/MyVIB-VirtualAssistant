@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/transactionChooseTypeFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.TransactionChooseTypeFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.transaction_fragment.TransactionChooseTypeFragment"
         android:label="TransactionChooseTypeFragment" >
         <action
             android:id="@+id/ChooseToAdd"
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/transactionAddAccountFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.TransactionAddAccountFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.transaction_fragment.TransactionAddAccountFragment"
         android:label="TransactionAddAccountFragment" >
         <action
             android:id="@+id/AddToConfirm"
@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/transactionExistingAccountFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.TransactionExistingAccountFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.transaction_fragment.TransactionExistingAccountFragment"
         android:label="TransactionExistingAccountFragment" >
         <action
             android:id="@+id/ExistingToAdd"
@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/transactionConfirmFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.TransactionConfirmFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.transaction_fragment.TransactionConfirmFragment"
         android:label="TransactionConfirmFragment" >
         <action
             android:id="@+id/ConfirmToSuccess"
@@ -84,6 +84,6 @@
 
     <fragment
         android:id="@+id/transactionSuccessFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.TransactionSuccessFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.transaction_fragment.TransactionSuccessFragment"
         android:label="TransactionSuccessFragment" />
 </navigation>

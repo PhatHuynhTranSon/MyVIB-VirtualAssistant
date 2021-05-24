@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.ui;
+package com.example.myvib_virtual_assistant.ui.main_fragments;
 
 import android.os.Bundle;
 
@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.myvib_virtual_assistant.R;
+import com.example.myvib_virtual_assistant.ui.PaymentFragmentArgs;
+import com.example.myvib_virtual_assistant.ui.PaymentFragmentDirections;
 
 public class PaymentFragment extends Fragment implements View.OnKeyListener {
     //Get sentence from arguments

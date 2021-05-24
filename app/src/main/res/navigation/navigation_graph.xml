@@ -6,7 +6,7 @@
     app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/accountFragment2"
-        android:name="com.example.myvib_virtual_assistant.ui.AccountFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.AccountFragment"
         android:label="AccountFragment" >
         <argument android:name="sentence" />
         <action
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/languageFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.LanguageFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.LanguageFragment"
         android:label="LanguageFragment" >
         <action
             android:id="@+id/action_languageFragment_to_homeFragment2"
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.PaymentFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.PaymentFragment"
         android:label="PaymentFragment" >
         <argument android:name="sentence" />
         <action
@@ -53,7 +53,7 @@
 
     <fragment
         android:id="@+id/predictionFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.PredictionFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.PredictionFragment"
         android:label="PredictionFragment" >
         <action
             android:id="@+id/PredictionToTransaction"
@@ -107,7 +107,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.SplashFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.SplashFragment"
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_languageFragment"
@@ -119,7 +119,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.TransactionFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.TransactionFragment"
         android:label="TransactionFragment" >
         <argument android:name="sentence" />
         <action
@@ -135,13 +135,13 @@
 
     <fragment
         android:id="@+id/customerServiceFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.CustomerServiceFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.CustomerServiceFragment"
         android:label="fragment_customer_service"
         tools:layout="@layout/fragment_customer_service" />
 
     <fragment
         android:id="@+id/homeFragment2"
-        android:name="com.example.myvib_virtual_assistant.ui.HomeFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment2_to_speechToTextFragment"
@@ -175,7 +175,7 @@
 
     <fragment
         android:id="@+id/speechToTextFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.SpeechToTextFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.SpeechToTextFragment"
         android:label="SpeechToTextFragment" >
         <action
             android:id="@+id/passSpeech"
@@ -187,7 +187,7 @@
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.example.myvib_virtual_assistant.ui.LocationFragment"
+        android:name="com.example.myvib_virtual_assistant.ui.main_fragments.LocationFragment"
         android:label="LocationFragment" >
         <argument
             android:name="sentence"

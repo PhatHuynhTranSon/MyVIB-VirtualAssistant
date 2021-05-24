@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.ui;
+package com.example.myvib_virtual_assistant.ui.main_fragments;
 
 import android.os.Bundle;
 
@@ -29,6 +29,8 @@ import com.example.myvib_virtual_assistant.location.device.DeviceLocationRetriev
 import com.example.myvib_virtual_assistant.location.nearest.NearestLocationRetriever;
 import com.example.myvib_virtual_assistant.location.nearest.NearestLocationRetrieverBuilder;
 import com.example.myvib_virtual_assistant.location.nearest.NearestLocationRetrieverListener;
+import com.example.myvib_virtual_assistant.ui.LocationFragmentArgs;
+import com.example.myvib_virtual_assistant.ui.LocationFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;

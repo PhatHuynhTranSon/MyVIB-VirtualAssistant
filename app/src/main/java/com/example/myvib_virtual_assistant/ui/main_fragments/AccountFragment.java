@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.ui;
+package com.example.myvib_virtual_assistant.ui.main_fragments;
 
 import android.os.Bundle;
 
@@ -24,6 +24,8 @@ import com.example.myvib_virtual_assistant.balance.AccountBalanceRetriever;
 import com.example.myvib_virtual_assistant.balance.AccountBalanceRetrieverBuilder;
 import com.example.myvib_virtual_assistant.data.models.Balance;
 import com.example.myvib_virtual_assistant.string.StringUtils;
+import com.example.myvib_virtual_assistant.ui.AccountFragmentArgs;
+import com.example.myvib_virtual_assistant.ui.AccountFragmentDirections;
 
 
 public class AccountFragment extends Fragment implements AccountBalanceListener, View.OnKeyListener {

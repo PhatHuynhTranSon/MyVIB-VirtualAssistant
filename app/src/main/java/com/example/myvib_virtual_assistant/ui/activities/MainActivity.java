@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.ui;
+package com.example.myvib_virtual_assistant.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

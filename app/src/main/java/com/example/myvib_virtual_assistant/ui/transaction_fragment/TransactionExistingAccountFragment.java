@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.ui;
+package com.example.myvib_virtual_assistant.ui.transaction_fragment;
 
 import android.os.Bundle;
 
@@ -23,6 +23,7 @@ import com.example.myvib_virtual_assistant.account.AccountRetrieverListener;
 import com.example.myvib_virtual_assistant.adapter.AccountAdapter;
 import com.example.myvib_virtual_assistant.balance.AccountBalanceRetrieverBuilder;
 import com.example.myvib_virtual_assistant.data.models.Account;
+import com.example.myvib_virtual_assistant.ui.TransactionExistingAccountFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;

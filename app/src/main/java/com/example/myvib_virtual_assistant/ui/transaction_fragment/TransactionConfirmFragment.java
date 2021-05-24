@@ -1,4 +1,4 @@
-package com.example.myvib_virtual_assistant.ui;
+package com.example.myvib_virtual_assistant.ui.transaction_fragment;
 
 import android.os.Bundle;
 
@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.myvib_virtual_assistant.R;
 import com.example.myvib_virtual_assistant.string.StringUtils;
+import com.example.myvib_virtual_assistant.ui.TransactionConfirmFragmentArgs;
 
 /**
  * A simple {@link Fragment} subclass.
