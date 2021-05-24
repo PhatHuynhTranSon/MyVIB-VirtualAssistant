@@ -16,7 +16,6 @@ import android.widget.ImageView;
 
 import com.example.myvib_virtual_assistant.R;
 import com.example.myvib_virtual_assistant.languages.Language;
-import com.example.myvib_virtual_assistant.ui.HomeFragmentDirections;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     //Save image view

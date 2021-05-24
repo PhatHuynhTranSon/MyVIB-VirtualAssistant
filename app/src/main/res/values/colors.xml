@@ -9,4 +9,5 @@
     <color name="colorTrueBlack">#000000</color>
     <color name="colorLightOrange">#FBC55F</color>
     <color name="colorLightBlue">#8ECAE6</color>
+    <color name="colorTrueWhite">#ffffff</color>
 </resources>

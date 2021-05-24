@@ -65,4 +65,18 @@
     <string name="can_not_get_nearest">Không thể tìm thấy ngân hàng</string>
     <string name="can_not_get_location">Không thể định vị điện thoại</string>
     <string name="no_location_available">Không có ngân hàng trong bán kính 2km</string>
+    <string name="touch_icon">Nhấn vào biểu tượng này</string>
+    <string name="touch_icon_prompt">Nhấn vào biểu tượng để nói chuyện với AI</string>
+    <string name="on_boarding_view_balance">Xem tài khoản</string>
+    <string name="on_boarding_balance_prompt">Nói \"Xem tài khoản\" để xem thông tin</string>
+    <string name="on_boarding_transfer_money">Chuyển tiền</string>
+    <string name="on_boarding_transfer_money_prompt">Nói \"Chuyển tiền\" để thực hiện giao dịch</string>
+    <string name="on_boarding_payment">"Thanh toán "</string>
+    <string name="on_boarding_handle_payment">Nói \"Thanh toán\" để trả tiền điện nước</string>
+    <string name="on_boarding_customer_service">Giao tiếp với AI</string>
+    <string name="on_boarding_customer_service_prompt">Nói \"Tôi cần giúp đỡ\" để nói chuyện với chatbot</string>
+    <string name="on_boarding_location">Tìm ngân hàng</string>
+    <string name="on_boarding_location_prompt">Nói \"Tìm ngân hàng\" để định vị ngân hàng gần nhất</string>
+    <string name="on_boarding_skip">Hoàn tất</string>
+    <string name="on_boarding_finish">Hoàn tất</string>
 </resources>

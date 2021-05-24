@@ -66,4 +66,19 @@
     <string name="can_not_get_nearest">Can not retrieve banks near you</string>
     <string name="can_not_get_location">Can not get device location</string>
     <string name="no_location_available">Sorry, no bank is available with 2km.</string>
+    <string name="touch_icon">Touch the symbol</string>
+    <string name="touch_icon_prompt">Touch this symbol on the home page to start talking</string>
+    <string name="on_boarding_view_balance">View balance</string>
+    <string name="on_boarding_balance_prompt">Say \"View account\" to app to view your balance</string>
+    <string name="on_boarding_transfer_money">Transfer money</string>
+    <string name="on_boarding_transfer_money_prompt">Say \"Transfer\" to app to make transactions</string>
+    <string name="on_boarding_payment">Handle all payments</string>
+    <string name="on_boarding_handle_payment">Say \"Pay for bills\" to app to handle all payments</string>
+    <string name="on_boarding_customer_service">AI Customer Service</string>
+    <string name="on_boarding_customer_service_prompt">Say \"I need some help\" to chat with our AI</string>
+    <string name="on_boarding_location">Find nearest banks</string>
+    <string name="on_boarding_location_prompt">Say \"Find nearest VIB\" to locate nearest banks</string>
+    <string name="on_boarding_skip">Skip</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="on_boarding_finish">Finish</string>
 </resources>

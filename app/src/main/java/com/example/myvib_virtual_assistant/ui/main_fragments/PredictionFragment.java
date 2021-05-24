@@ -20,8 +20,6 @@ import com.example.myvib_virtual_assistant.prediction.Intent;
 import com.example.myvib_virtual_assistant.prediction.IntentPredictor;
 import com.example.myvib_virtual_assistant.prediction.IntentPredictorBuilder;
 import com.example.myvib_virtual_assistant.prediction.IntentPredictorListener;
-import com.example.myvib_virtual_assistant.ui.PredictionFragmentArgs;
-import com.example.myvib_virtual_assistant.ui.PredictionFragmentDirections;
 
 public class PredictionFragment extends Fragment implements IntentPredictorListener {
     //Intent predictor

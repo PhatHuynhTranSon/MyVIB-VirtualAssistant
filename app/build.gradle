@@ -30,6 +30,7 @@ android {
 
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
     def nav_version = "2.3.5"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -53,4 +54,7 @@ dependencies {
     //OTF-fonts
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
+
+    //AndroidX Preference
+    implementation 'androidx.preference:preference:1.1.1'
 }

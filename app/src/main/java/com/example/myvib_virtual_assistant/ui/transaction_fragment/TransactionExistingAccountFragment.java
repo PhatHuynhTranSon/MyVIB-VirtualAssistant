@@ -21,9 +21,7 @@ import com.example.myvib_virtual_assistant.account.AccountRetriever;
 import com.example.myvib_virtual_assistant.account.AccountRetrieverBuilder;
 import com.example.myvib_virtual_assistant.account.AccountRetrieverListener;
 import com.example.myvib_virtual_assistant.adapter.AccountAdapter;
-import com.example.myvib_virtual_assistant.balance.AccountBalanceRetrieverBuilder;
 import com.example.myvib_virtual_assistant.data.models.Account;
-import com.example.myvib_virtual_assistant.ui.TransactionExistingAccountFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;

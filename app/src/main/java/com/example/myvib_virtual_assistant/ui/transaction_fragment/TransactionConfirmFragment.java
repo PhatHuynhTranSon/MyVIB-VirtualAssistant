@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.example.myvib_virtual_assistant.R;
 import com.example.myvib_virtual_assistant.string.StringUtils;
-import com.example.myvib_virtual_assistant.ui.TransactionConfirmFragmentArgs;
 
 /**
  * A simple {@link Fragment} subclass.
