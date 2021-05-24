@@ -142,7 +142,12 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
     }
 
     private void addLocationsToRecyclerView(List<Location> locations) {
-        locationAdapter.addAll(locations);
+        //Check if at least on location is available
+        if (locations.size() == 0) {
+            displayNotAvailableMessage();
+        } else {
+            locationAdapter.addAll(locations);
+        }
     }
 
     @Override
@@ -153,6 +158,10 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
 
     private void displayBankLocationsError() {
         Toast.makeText(getContext(), R.string.can_not_get_nearest, Toast.LENGTH_SHORT).show();
+    }
+
+    private void displayNotAvailableMessage() {
+        Toast.makeText(getContext(), R.string.no_location_available, Toast.LENGTH_SHORT).show();
     }
 
     @Override
