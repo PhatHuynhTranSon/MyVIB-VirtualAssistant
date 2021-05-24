@@ -77,10 +77,10 @@ We currently support following operations
 
 ## Demo
 Advertisement: [To be Added]
-Demo video: [To be Added]
+Demo video: [!https://www.youtube.com/watch?v=WaZhVN-2JkU]
 
 ## How to run
-This will be added later
+Download the APK from the following link: [!https://vib-competition-bucket-resource.s3-ap-southeast-2.amazonaws.com/app-release.apk] and select "Install anyway" if asked
 
 ## Disclaimer
 The code written for the application does not adhere to any architecture like MVP or MVVM as the team focus on developing this app as quickly as possbile, and thus the code may not be as clean and maintainable we had hoped it to be. Nonetheless, in the future, we will refactor it using design patterns and MVVM architecture to make it cleaner and more readable.
