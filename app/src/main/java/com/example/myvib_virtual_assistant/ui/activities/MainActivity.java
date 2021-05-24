@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setUpFont();
 
         //Request permission
-        requestRecordAudioPermission();
-        requestLocationPermission();
+        requestPermissions();
     }
 
     //Set up font
@@ -42,32 +41,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Request permission to listen to audio
-    private void requestRecordAudioPermission() {
+    private void requestPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             String requiredPermission = Manifest.permission.RECORD_AUDIO;
-
-            // If the user previously denied this permission then show a message explaining why
-            // this permission is needed
-            if (checkCallingOrSelfPermission(requiredPermission) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{requiredPermission}, 101);
-            }
-        }
-    }
-
-    //Request permission to access location
-    private void requestLocationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             String fineLocationPermission = Manifest.permission.ACCESS_FINE_LOCATION;
             String coarseLocationPermission = Manifest.permission.ACCESS_COARSE_LOCATION;
 
             // If the user previously denied this permission then show a message explaining why
             // this permission is needed
-            if (checkCallingOrSelfPermission(fineLocationPermission) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{fineLocationPermission}, 102);
-            }
-
-            if (checkCallingOrSelfPermission(coarseLocationPermission) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{coarseLocationPermission}, 103);
+            if (checkCallingOrSelfPermission(requiredPermission) != PackageManager.PERMISSION_GRANTED ||
+                checkCallingOrSelfPermission(fineLocationPermission) != PackageManager.PERMISSION_GRANTED ||
+                checkCallingOrSelfPermission(coarseLocationPermission) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{
+                        requiredPermission,
+                        fineLocationPermission,
+                        coarseLocationPermission},
+                        101);
             }
         }
     }
