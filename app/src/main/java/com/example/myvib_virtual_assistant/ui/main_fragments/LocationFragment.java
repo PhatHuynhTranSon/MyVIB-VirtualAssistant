@@ -10,7 +10,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,6 +126,7 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
     private void initializeDeviceLocationRetriever() {
         //Create
         mDeviceLocationRetriever = DeviceLocationRetrieverBuilder.getOriginal(getContext());
+
         //Get location
         mDeviceLocationRetriever.getLocation(this);
     }

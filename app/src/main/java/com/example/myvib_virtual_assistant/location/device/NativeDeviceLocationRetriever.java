@@ -35,8 +35,7 @@ public class NativeDeviceLocationRetriever implements DeviceLocationRetriever, L
             mListener.onDeviceLocationError(new Exception("Location service not available"));
             return;
         }
-        mLocationManager.requestLocationUpdates(
-                LocationManager.NETWORK_PROVIDER, 0, 0, this);
+        mLocationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null);
     }
 
     @Override
