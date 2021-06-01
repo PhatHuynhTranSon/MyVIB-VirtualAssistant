@@ -85,6 +85,7 @@ public class OnBoardingMainFragment extends Fragment implements View.OnClickList
     private void initializeViewPager(View view) {
         // Instantiate a ViewPager2 and a PagerAdapter.
         viewPager = view.findViewById(R.id.on_boarding_viewpager);
+
         //Set zoom page transformer
         viewPager.setPageTransformer(new ZoomOutPageTransformer());
         pagerAdapter = new ScreenSlidePagerAdapter(this);
@@ -93,7 +94,7 @@ public class OnBoardingMainFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        setCompletedOnBoarding();
+        //setCompletedOnBoarding();
         navigateToLanguage();
     }
 
