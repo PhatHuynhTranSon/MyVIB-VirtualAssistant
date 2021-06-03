@@ -35,7 +35,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
-            cardView = view.findViewById(R.id.accountCardView);
+            cardView = view.findViewById(R.id.locationCardView);
             accountText = view.findViewById(R.id.addressText);
             nameText = view.findViewById(R.id.nameText);
 

@@ -17,9 +17,17 @@ import com.example.myvib_virtual_assistant.string.StringUtils;
 import java.util.List;
 
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHolder> {
+    //Listener
+    public interface LocationListener {
+        void onClick(Location location);
+    }
+    LocationListener mListener;
+
+    //Location list
     private List<Location> locations;
 
-    public LocationAdapter(List<Location> locations) {
+    public LocationAdapter(LocationListener listener, List<Location> locations) {
+        this.mListener = listener;
         this.locations = locations;
     }
 
@@ -61,6 +69,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
         public TextView nameText;
         public TextView openingText;
         public TextView addressText;
+        public CardView locationCardView;
         public View view;
 
         public ViewHolder(@NonNull View itemView) {
@@ -69,6 +78,18 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
             openingText = view.findViewById(R.id.openingText);
             addressText = view.findViewById(R.id.addressText);
             nameText = view.findViewById(R.id.nameText);
+            locationCardView = view.findViewById(R.id.locationCardView);
+
+            //Set on click listener
+            locationCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Get position
+                    int position = getAdapterPosition();
+                    //Listener
+                    if (mListener != null) mListener.onClick(locations.get(position));
+                }
+            });
         }
     }
 

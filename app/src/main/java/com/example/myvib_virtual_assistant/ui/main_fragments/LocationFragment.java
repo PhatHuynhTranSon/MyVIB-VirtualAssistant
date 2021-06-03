@@ -1,5 +1,7 @@
 package com.example.myvib_virtual_assistant.ui.main_fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,7 +34,7 @@ import com.example.myvib_virtual_assistant.location.nearest.NearestLocationRetri
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocationFragment extends Fragment implements NearestLocationRetrieverListener, DeviceLocationRetrieverListener, View.OnKeyListener {
+public class LocationFragment extends Fragment implements NearestLocationRetrieverListener, DeviceLocationRetrieverListener, View.OnKeyListener, LocationAdapter.LocationListener {
     //Hold sentence
     String sentence;
 
@@ -109,7 +111,7 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
     private void initializeRecyclerView() {
         //Create empty array list and adapter
         List<Location> initialLocations = new ArrayList<>();
-        locationAdapter = new LocationAdapter(initialLocations);
+        locationAdapter = new LocationAdapter(this, initialLocations);
 
         //Set up layout manager
         locationRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -221,5 +223,20 @@ public class LocationFragment extends Fragment implements NearestLocationRetriev
 
     private String getIntentText() {
         return intentEditText.getText().toString();
+    }
+
+    @Override
+    public void onClick(Location location) {
+        //For location
+        startMapActivity(location);
+    }
+
+    private void startMapActivity(Location location) {
+        Uri gmmIntentUri = Uri.parse(String.format("geo:%f,%f", location.getLat(), location.getLng()));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
     }
 }
