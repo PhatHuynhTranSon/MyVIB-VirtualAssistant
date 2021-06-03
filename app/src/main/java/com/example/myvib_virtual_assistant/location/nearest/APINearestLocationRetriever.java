@@ -1,6 +1,6 @@
 package com.example.myvib_virtual_assistant.location.nearest;
 
-import com.example.myvib_virtual_assistant.data.apis.BackendAPI;
+import com.example.myvib_virtual_assistant.data.apis.LocationBackendAPI;
 import com.example.myvib_virtual_assistant.data.models.Locations;
 import com.example.myvib_virtual_assistant.data.requests.LocationRequestBody;
 
@@ -9,10 +9,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class APINearestLocationRetriever implements NearestLocationRetriever, Callback<Locations> {
-    BackendAPI mApi;
+    LocationBackendAPI mApi;
     NearestLocationRetrieverListener mListener;
 
-    public APINearestLocationRetriever(BackendAPI mApi) {
+    public APINearestLocationRetriever(LocationBackendAPI mApi) {
         this.mApi = mApi;
     }
 
